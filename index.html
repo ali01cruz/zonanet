@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Tecnología — ZonaNet</title>
+    <style>
+        /* Efecto de scroll suave al tocar los botones */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a; 
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Encabezado fijo arriba */
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            width: 100%;
+            text-align: center;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Barra de botones de fácil acceso */
+        .barra-accesos {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0 10px 0;
+            width: 90%;
+            max-width: 900px;
+            justify-content: center;
+        }
+
+        .btn-acceso {
+            background-color: #1e293b;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: all 0.2s ease;
+            flex: 1;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-acceso:hover {
+            background-color: #38bdf8;
+            color: #0f172a;
+            border-color: #38bdf8;
+            transform: translateY(-2px);
+        }
+
+        /* Contenedor de la lista de precios (Imágenes) */
+        .lista-precios {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 10px;
+        }
+
+        .lista-precios img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Sección de Información */
+        .seccion-info {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding-bottom: 90px; 
+        }
+
+        /* Tarjetas de información */
+        .info-card {
+            background-color: #1e293b;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid #334155;
+            /* Margen superior para que el menú fijo no tape el título al scrollear */
+            scroll-margin-top: 90px; 
+        }
+
+        /* Tarjeta destacada para Starlink */
+        .info-card.destacado {
+            border: 2px solid #38bdf8;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+        }
+
+        .info-card h2 {
+            margin-top: 0;
+            color: #38bdf8;
+            font-size: 1.4rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+        }
+
+        .info-card p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            font-size: 1.1rem;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nota-importante {
+            background-color: #0f172a;
+            padding: 15px;
+            border-left: 4px solid #f59e0b;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 1rem !important;
+        }
+
+        .precio-destacado {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4ade80;
+            margin: 15px 0;
+        }
+
+        /* Botón de contacto Flotante */
+        .btn-contacto-flotante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.8rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s, background-color 0.2s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-contacto-flotante:hover {
+            background-color: #128c7e;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Catálogo de Tecnología — ZonaNet</h1>
+    </header>
+
+    <!-- BOTONES DE FÁCIL ACCESO -->
+    <div class="barra-accesos">
+        <a href="#financiacion" class="btn-acceso">💳 Ver Financiación</a>
+        <a href="#ubicacion" class="btn-acceso">📍 Ver Ubicación</a>
+    </div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/5493813952649" target="_blank" class="btn-contacto-flotante">
+        💬 Contacto: 3813952649
+    </a>
+
+    <!-- Las 8 listas de precios -->
+    <main class="lista-precios">
+        <img src="imagen1.jpg" alt="Lista de Precios 1">
+        <img src="imagen2.jpg" alt="Lista de Precios 2">
+        <img src="imagen3.jpg" alt="Lista de Precios 3">
+        <img src="imagen4.jpg" alt="Lista de Precios 4">
+        <img src="imagen5.jpg" alt="Lista de Precios 5">
+        <img src="imagen6.jpg" alt="Lista de Precios 6">
+        <img src="imagen7.jpg" alt="Lista de Precios 7">
+        <img src="imagen8.jpg" alt="Lista de Precios 8">
+    </main>
+
+    <!-- Sección de Información -->
+    <section class="seccion-info">
+
+        <!-- UBICACIÓN (Con ID para el botón) -->
+        <div class="info-card" id="ubicacion">
+            <h2>🕒 Horario de Atención & Ubicación</h2>
+            <p><strong>🌞 Mañana:</strong> 09:00 hs a 13:00 hs</p>
+            <p><strong>🌙 Tarde:</strong> 18:00 hs en adelante</p>
+            <p style="margin-top: 20px;"><strong>📍 Ubicación:</strong> Esquina Senador Pérez y Sarmiento 294, Abra Pampa – Jujuy</p>
+        </div>
+
+        <!-- FINANCIACIÓN (Con ID para el botón) -->
+        <div class="info-card" id="financiacion">
+            <h2>💳 Formas de Pago — ZonaNet</h2>
+            <ul class="info-list">
+                <li>✅ Transferencia bancaria</li>
+                <li>✅ Mercado Pago</li>
+                <li>✅ Pago en efectivo</li>
+                <li>✅ Tarjetas de débito y crédito</li>
+                <li>✅ Billeteras virtuales</li>
+                <li>✅ Pago presencial en nuestro local</li>
+                <li>✅ Financiación con recibo de sueldo</li>
+            </ul>
+            
+            <p class="nota-importante">
+                📌 <strong>Para financiar con recibo de sueldo:</strong> El cliente debe enviarnos o acercarnos su recibo para evaluación y aprobación.
+            </p>
+
+            <h3 style="color: #38bdf8; margin-top: 20px; font-size: 1.1rem;">📌 Planes en cuotas:</h3>
+            <ul class="info-list">
+                <li>✔️ 3 cuotas +25%</li>
+                <li>✔️ 6 cuotas +45%</li>
+                <li>✔️ 12 cuotas +60%</li>
+            </ul>
+        </div>
+
+        <!-- STARLINK MINI -->
+        <div class="info-card destacado">
+            <h2>🛰️ STARLINK MINI — ZonaNet</h2>
+            <p><strong>Kit Starlink Mini</strong></p>
+            <p class="precio-destacado">💰 Precio: $300.000</p>
+            
+            <h3 style="color: #38bdf8; margin-bottom: 5px;">📡 Planes mensuales:</h3>
+            <p>🏠 <strong>Domicilio:</strong> $45.000 por mes</p>
+            <p>🚗 <strong>Vehículos / Auto:</strong> $140.000 por mes</p>
+            
+            <ul class="info-list" style="margin-top: 20px;">
+                <li>✅ Nosotros realizamos la instalación</li>
+                <li>✅ Vendemos transformador y adaptador ("chupete")</li>
+                <li>✅ Internet satelital de alta velocidad</li>
+                <li>✅ Ideal para zonas rurales y viajes</li>
+                <li>✅ Fácil instalación</li>
+            </ul>
+        </div>
+
+    </section>
+
+</body>
+</html>
